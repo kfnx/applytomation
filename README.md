@@ -7,24 +7,12 @@ A Chrome extension that automatically fills job application forms using your sav
 ## Features
 
 - **Smart Form Detection**: Automatically detects and maps form fields on popular job portals
-- **Profile Management**: Cloud-based user profiles with secure authentication
 - **Auto-Fill Forms**: One-click form filling with your personal and professional data
+- **Profile Management**: Cloud-based user profiles with secure authentication
 - **Application Tracking**: Keep track of all your job applications
-- **Multi-Site Support**: Works with LinkedIn, Indeed, Glassdoor, Workday, and more
+- **Any-Site Support**: Works with LinkedIn, Indeed, Glassdoor, Workday, and more
 - **Usage Analytics**: Track your application activity and progress
 
-## Supported Job Portals
-
-- LinkedIn
-- Indeed
-- Glassdoor
-- Monster
-- ZipRecruiter
-- Jobvite
-- Workday
-- Greenhouse
-- Lever
-- BambooHR
 
 ## Setup Instructions
 
@@ -41,32 +29,12 @@ A Chrome extension that automatically fills job application forms using your sav
 2. Replace `YOUR_SUPABASE_URL` with your Supabase project URL
 3. Replace `YOUR_SUPABASE_ANON_KEY` with your Supabase anon key
 
-### 3. Create Extension Icons (Optional)
-
-Create the following icon files in `extension/assets/`:
-- `icon16.png` (16x16px)
-- `icon32.png` (32x32px) 
-- `icon48.png` (48x48px)
-- `icon128.png` (128x128px)
-
-Or use any 16x16, 32x32, 48x48, and 128x128 pixel PNG icons for now.
-
 ### 4. Load the Extension in Chrome
 
 1. Open Chrome and go to `chrome://extensions/`
 2. Enable "Developer mode" in the top right
 3. Click "Load unpacked" and select the `extension` folder
 4. The ApplyToMation extension should now appear in your extensions list
-
-### 5. Set up Authentication (Optional - for OAuth)
-
-If you want to use Google OAuth:
-1. Go to [Google Cloud Console](https://console.cloud.google.com)
-2. Create a new project or select existing one
-3. Enable the Google+ API
-4. Create OAuth 2.0 credentials
-5. Add your Chrome extension ID to authorized origins
-6. Configure the OAuth settings in Supabase Authentication settings
 
 ## Usage
 
