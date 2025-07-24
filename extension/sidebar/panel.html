@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ApplyToMation</title>
+    <link rel="stylesheet" href="panel.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Loading State -->
+        <div id="loading-screen" class="screen">
+            <div class="loading-spinner"></div>
+            <p>Loading ApplyToMation...</p>
+        </div>
+
+        <!-- Authentication Screen -->
+        <div id="auth-screen" class="screen hidden">
+            <div class="header">
+                <h1>ApplyToMation</h1>
+                <p>Streamline your job applications</p>
+            </div>
+
+            <div class="auth-tabs">
+                <button id="login-tab" class="tab-button active">Login</button>
+                <button id="signup-tab" class="tab-button">Sign Up</button>
+            </div>
+
+            <!-- Login Form -->
+            <form id="login-form" class="auth-form">
+                <div class="form-group">
+                    <label for="login-email">Email</label>
+                    <input type="email" id="login-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Password</label>
+                    <input type="password" id="login-password" required>
+                </div>
+                <button type="submit" class="btn-primary">Login</button>
+                <div class="divider">or</div>
+                <button type="button" id="google-login" class="btn-oauth">
+                    <img src="../assets/google-icon.svg" alt="Google">
+                    Continue with Google
+                </button>
+            </form>
+
+            <!-- Sign Up Form -->
+            <form id="signup-form" class="auth-form hidden">
+                <div class="form-group">
+                    <label for="signup-email">Email</label>
+                    <input type="email" id="signup-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="signup-password">Password</label>
+                    <input type="password" id="signup-password" required minlength="6">
+                </div>
+                <div class="form-group">
+                    <label for="signup-confirm">Confirm Password</label>
+                    <input type="password" id="signup-confirm" required minlength="6">
+                </div>
+                <button type="submit" class="btn-primary">Create Account</button>
+                <div class="divider">or</div>
+                <button type="button" id="google-signup" class="btn-oauth">
+                    <img src="../assets/google-icon.svg" alt="Google">
+                    Sign up with Google
+                </button>
+            </form>
+
+            <div id="auth-error" class="error-message hidden"></div>
+        </div>
+
+        <!-- Main Application Screen -->
+        <div id="main-screen" class="screen hidden">
+            <div class="header">
+                <h1>ApplyToMation</h1>
+                <div class="user-info">
+                    <span id="user-email"></span>
+                    <button id="logout-btn" class="btn-secondary">Logout</button>
+                </div>
+            </div>
+
+            <!-- Navigation Tabs -->
+            <div class="nav-tabs">
+                <button id="fill-tab" class="tab-button active">Fill Form</button>
+                <button id="profile-tab" class="tab-button">Profile</button>
+                <button id="history-tab" class="tab-button">History</button>
+            </div>
+
+            <!-- Fill Form Tab -->
+            <div id="fill-content" class="tab-content">
+                <div class="form-detector">
+                    <h3>Form Detection</h3>
+                    <div id="form-status" class="status-indicator">
+                        <span class="status-text">No form detected</span>
+                    </div>
+                    <div id="detected-fields" class="detected-fields hidden">
+                        <h4>Detected Fields:</h4>
+                        <ul id="fields-list"></ul>
+                    </div>
+                    <div class="fill-controls">
+                        <button id="scan-form-btn" class="btn-primary">Scan Page</button>
+                        <button id="fill-form-btn" class="btn-primary" disabled>Fill Form</button>
+                    </div>
+                </div>
+                
+                <div class="usage-info">
+                    <div class="usage-stats">
+                        <span id="usage-count">0</span> / <span id="usage-limit">10</span> applications this month
+                    </div>
+                    <div class="progress-bar">
+                        <div id="usage-progress" class="progress-fill"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Profile Tab -->
+            <div id="profile-content" class="tab-content hidden">
+                <form id="profile-form">
+                    <h3>Personal Information</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="first-name">First Name</label>
+                            <input type="text" id="first-name" name="first_name">
+                        </div>
+                        <div class="form-group">
+                            <label for="last-name">Last Name</label>
+                            <input type="text" id="last-name" name="last_name">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    
+                    <h3>Address</h3>
+                    <div class="form-group">
+                        <label for="address-line1">Address Line 1</label>
+                        <input type="text" id="address-line1" name="address_line1">
+                    </div>
+                    <div class="form-group">
+                        <label for="address-line2">Address Line 2</label>
+                        <input type="text" id="address-line2" name="address_line2">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="city">City</label>
+                            <input type="text" id="city" name="city">
+                        </div>
+                        <div class="form-group">
+                            <label for="state">State</label>
+                            <input type="text" id="state" name="state">
+                        </div>
+                        <div class="form-group">
+                            <label for="zip-code">ZIP Code</label>
+                            <input type="text" id="zip-code" name="zip_code">
+                        </div>
+                    </div>
+
+                    <h3>Professional Information</h3>
+                    <div class="form-group">
+                        <label for="current-title">Current Title</label>
+                        <input type="text" id="current-title" name="current_title">
+                    </div>
+                    <div class="form-group">
+                        <label for="years-experience">Years of Experience</label>
+                        <input type="number" id="years-experience" name="years_experience" min="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="summary">Professional Summary</label>
+                        <textarea id="summary" name="summary" rows="4"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="skills">Skills (comma-separated)</label>
+                        <textarea id="skills" name="skills" rows="3" placeholder="JavaScript, React, Node.js, Python..."></textarea>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" id="save-profile-btn" class="btn-primary">Save Profile</button>
+                        <button type="button" id="upload-resume-btn" class="btn-secondary">Upload Resume</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- History Tab -->
+            <div id="history-content" class="tab-content hidden">
+                <h3>Application History</h3>
+                <div id="applications-list" class="applications-list">
+                    <div class="no-applications">
+                        <p>No applications yet. Start filling forms to see your history!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Success/Error Messages -->
+        <div id="notification" class="notification hidden">
+            <span id="notification-text"></span>
+            <button id="notification-close">×</button>
+        </div>
+    </div>
+
+    <!-- Hidden file input for resume upload -->
+    <input type="file" id="resume-file-input" accept=".pdf,.doc,.docx" style="display: none;">
+
+    <!-- Scripts -->
+    <script src="../lib/supabase.js"></script>
+    <script src="../lib/supabase-client.js"></script>
+    <script src="panel.js"></script>
+</body>
+</html>
