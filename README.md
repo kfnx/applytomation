@@ -1,5 +1,7 @@
 # ApplyToMation - Chrome Extension for Job Application Automation
 
+<img src="demo.png" />
+
 A Chrome extension that automatically fills job application forms using your saved profile data. Built as a SaaS solution with user authentication and cloud storage via Supabase.
 
 ## Features
@@ -184,9 +186,5 @@ ApplyToMation respects your privacy:
 
 - [ ] AI-powered form field detection
 - [ ] Custom field mapping interface
-- [ ] Bulk application features
-- [ ] Application status tracking
-- [ ] Email integration
-- [ ] Mobile app version
-- [ ] Team collaboration features
-- [ ] Advanced analytics dashboard
+- [ ] Application history
+- [ ] User authentication for user personalization
